@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
+    const WIDTH = 50
+    const HEIGHT = 25
+    
     const [playState, setPlayState] = useState(false)
 
     const [hover, setHover] = useState({x: 0, y: 0})
@@ -53,8 +56,8 @@ export default function Home() {
             // i literally cant use a spread operator to clone the array so i have to recreate the empty array as a whole
             let m = baseMatrix()   
 
-            for (let x = 1; x < 25 + 1; x++) {
-                for (let y = 1; y < 50 + 1; y++) {
+            for (let x = 1; x < WIDTH + 1; x++) {
+                for (let y = 1; y < HEIGHT + 1; y++) {
                     let sum = 0
     
                     if (oldArr[x + 1][y + 1]) sum++
@@ -78,6 +81,40 @@ export default function Home() {
                     }
                 }
             }
+            // for (let x = 0; x < WIDTH + 2; x++) {
+            //     for (let y = 0; y < HEIGHT + 2; y++) {
+            //         let sum = 0
+    
+            //         // m[x][y] = true
+
+            //         console.log(oldArr)
+
+            //         let posX = x + 1 > WIDTH + 2 ? 0 : x + 1
+            //         let negX = x - 1 < 0 ? WIDTH + 2 : x - 1
+            //         let posY = y + 1 > HEIGHT + 2 ? 0 : y + 1
+            //         let negY = y - 1 < 0 ? HEIGHT + 2 : y - 1
+
+            //         if (oldArr[posX][posY]) sum++
+            //         if (oldArr[negX][posY]) sum++
+            //         if (oldArr[posX][negY]) sum++
+            //         if (oldArr[negX][negY]) sum++
+            //         if (oldArr[posX][y]) sum++
+            //         if (oldArr[negX][y]) sum++
+            //         if (oldArr[x][posY]) sum++
+            //         if (oldArr[x][negY]) sum++
+    
+            //         if (oldArr[x][y] === false) {
+            //             if (sum === 3) m[x][y] = true
+            //         } else if (oldArr[x][y] === true) {
+            //             console.log({x, y})
+            //             console.log(sum)
+            //             if (sum > 3) m[x][y] = false
+            //             if (sum < 2) m[x][y] = false
+            //             if (sum === 2) m[x][y] = true
+            //             if (sum === 3) m[x][y] = true
+            //         }
+            //     }
+            // }
 
             return m
         })
